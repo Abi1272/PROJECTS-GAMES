@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+//function declaration: give computer a heads-up that you're writing your own function!
+void MonsterGen();
+
+int main() {//strarting point of program
+	
+	srand(time(NULL)); //seeds rand()
+	MonsterGen();
+	MonsterGen();
+	MonsterGen();
+	MonsterGen();
+	
+
+}// end of main
+
+//function defintion: what the function actually DOES
+void MonsterGen() {
+	int num = rand() % 100 + 1; //generated a random number
+	cout << "we generated " << num << endl;
+
+	if (num < 15) { //15% chance of skele
+		cout << "a skeleton appears!" << endl;
+	}
+	else if (num < 20) { //5% chance of zombie
+		cout << "a zombie attempts to bite you!" << endl;
+	}
+	else if (num < 50) { //30% chance of spider
+		cout << "a spider crawls at you!" << endl;
+	}
+	else if (num < 75) { //25% chance of witch}
+		cout << "oh no, a witch!" << endl;
+	}
+	else { //25% chance of creeper
+		cout << "a creeper appears (hissss)" << endl;
+	}
+}
