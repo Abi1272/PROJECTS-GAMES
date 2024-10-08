@@ -21,6 +21,13 @@ circX = 200
 circY = 200
 radius = 100
 
+CookiePic = pygame.image.load("cookie.png")
+CookieRect = CookiePic.get_rect(topleft=(100,100))
+
+font = pygame.font.Font('freesansbold.ttf', 32)
+text1 = font.render('score:', False, (0, 200, 200))
+text2 = font.render(str(int(numClicks)), 1, (0, 200, 200))
+
 #gameloop###################################################
 while True:
 #event queue (bucket that holds stuff that happens in game and passes to one of the sections below)
@@ -30,20 +37,26 @@ while True:
         break
 
     if event.type == pygame.MOUSEBUTTONDOWN: #check if clicked
-      if math.sqrt(math.sqrt((mousePos[0]-circX)**2 +(mousePos[1]-circY)**2))<radius:
+        if math.sqrt((mousePos[0]-circX)**2 +(mousePos[1]-circY)**2)<radius:
             numClicks+=1
-            print("CLICK")
+        print("CLICK")
 
     if event.type == pygame.MOUSEMOTION: #check if mouse moved
         mousePos = event.pos #refreshes mouse position
         print("mouse position: (",mousePos[0]," , ",mousePos[1], ")")
  
 #render section---------------------------------------------
-    screen.fill((0, 0, 0)) #wipe screen (without this, things smear)
+    screen.fill((255, 255, 255)) #wipe screen (without this, things smear)
     
     pygame.draw.circle(screen, (200, 0, 200), (circX,circY), radius)
     print("clicks:", numClicks) #uncomment this once collision is set up
         
+    screen.blit(CookiePic, CookieRect)
+    
+    text2 = font.render(str(int(numClicks)), 1, (0, 200, 200))
+    screen.blit(text1, (10, 10))
+    screen.blit(text2, (110, 10))
+  
     pygame.display.flip()
     
 
