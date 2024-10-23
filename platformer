@@ -17,6 +17,11 @@ xpos = 200 #xpos of player
 ypos = 200 #ypos of player
 vx = 0 #x velocity of player
 vy = 0 #y velocity of player
+
+xpos2 = 200 #xpos of player
+ypos2 = 200 #ypos of player
+vx2 = 0 #x velocity of player
+vy2 = 0 #y velocity of player
 keys = [False, False, False, False] #this list holds whether each key has been pressed
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
 
@@ -24,7 +29,7 @@ isOnGround = False #this variable stops gravity from pulling you down more when 
 while not gameover: #GAME LOOP############################################################
     clock.tick(60) #FPS
     
-    #Input Section------------------------------------------------------------
+    #Input Section-----------------------------------------------------------
     for event in pygame.event.get(): #quit game if x is pressed in top corner
         if event.type == pygame.QUIT:
             gameover = True
@@ -146,6 +151,7 @@ while not gameover: #GAME LOOP##################################################
     
     #player
     pygame.draw.rect(screen, (200, 0, 10), (xpos, ypos, 20,40))
+    pygame.draw.rect(screen, (200, 0, 10), (xpos2, ypos2, 20,40))
     
     #platforms
     pygame.draw.rect(screen, (200, 0, 10), (100, 750, 100, 20))
@@ -161,3 +167,4 @@ while not gameover: #GAME LOOP##################################################
 #end game loop------------------------------------------------------------------------------
 
 pygame.quit()
+
