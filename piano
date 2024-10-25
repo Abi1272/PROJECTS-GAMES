@@ -11,6 +11,12 @@ press = False
 pygame.mixer.init()
 k1 = pygame.mixer.Sound("key01.mp3")
 k3 = pygame.mixer.Sound("key03.mp3")
+k5 = pygame.mixer.Sound("key05.mp3")
+k7 = pygame.mixer.Sound("key07.mp3")
+k9 = pygame.mixer.Sound("key09.mp3")
+k11 = pygame.mixer.Sound("key11.mp3")
+k13 = pygame.mixer.Sound("key13.mp3")
+k15 = pygame.mixer.Sound("key15.mp3")
 
 #this holds onto what key the user has pressed
 key = 0
@@ -27,10 +33,23 @@ while True:
         key = 1
     elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] >500:
         key = 3
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] >500:
+        key = 5
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] >500:
+        key = 7
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] >500:
+        key = 9
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] >500:
+        key = 11
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] >500:
+        key = 13
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] >500:
+        key = 15
     
     #add more keys here!
     else:
         key = 0
+    
     
     #input section----------------------------------------------
     if event.type == pygame.QUIT: #close game window
@@ -77,6 +96,24 @@ while True:
         elif key == 3:
             pygame.mixer.Sound.play(k3)
             pygame.draw.rect(screen, (150,150,150), (100,500,100,300))
+        elif key == 5:
+            pygame.mixer.Sound.play(k5)
+            pygame.draw.rect(screen, (150,150,150), (200,500,100,300))
+        elif key == 7:
+            pygame.mixer.Sound.play(k7)
+            pygame.draw.rect(screen, (150,150,150), (300,500,100,300))
+        elif key == 9:
+            pygame.mixer.Sound.play(k9)
+            pygame.draw.rect(screen, (150,150,150), (400,500,100,300))
+        elif key == 11:
+            pygame.mixer.Sound.play(k11)
+            pygame.draw.rect(screen, (150,150,150), (500,500,100,300))
+        elif key == 13:
+            pygame.mixer.Sound.play(k13)
+            pygame.draw.rect(screen, (150,150,150), (600,500,100,300))
+        elif key == 15:
+            pygame.mixer.Sound.play(k15)
+            pygame.draw.rect(screen, (150,150,150), (700,500,100,300))
          
     
     pygame.display.flip() #always needed at the end of every game loop!
