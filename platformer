@@ -25,6 +25,8 @@ vy2 = 0 #y velocity of player
 keys = [False, False, False, False] #this list holds whether each key has been pressed
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
 
+keys2 = [False, False, False, False] #this list holds whether each key has been pressed
+isOnGround2 = False #this variable stops gravity from pulling you down more when on a platform
 
 while not gameover: #GAME LOOP############################################################
     clock.tick(60) #FPS
@@ -52,6 +54,32 @@ while not gameover: #GAME LOOP##################################################
             
       
 
+        elif event.type == pygame.KEYUP: #looks for key releases PLAYER 2
+            if event.key == pygame.K_a:
+                keys[a]=False
+
+            if event.key == pygame.K_w:
+                keys[w]=False
+                
+            if event.key == pygame.K_d:
+                keys[d]=False
+            
+            if event.type == pygame.KEYDOWN: #looks for key presses
+                if event.key == pygame.K_a:
+                    keys[a]=True
+                  
+
+             
+                if event.key == pygame.K_w:
+                    keys[w]=True
+      
+        
+                if event.key == pygame.K_d:
+                    keys[d]=True
+                
+            
+      
+
         elif event.type == pygame.KEYUP: #looks for key releases
             if event.key == pygame.K_LEFT:
                 keys[LEFT]=False
@@ -61,7 +89,6 @@ while not gameover: #GAME LOOP##################################################
                 
             if event.key == pygame.K_RIGHT:
                 keys[RIGHT]=False
-                
             
 
     #physics section--------------------------------------------------------------------
@@ -75,6 +102,15 @@ while not gameover: #GAME LOOP##################################################
     else:
         vx = 0
         
+ 
+    if keys[a]==True:
+        vx2 = -3
+   
+    elif keys[d]==True:
+        vx2 = 3   
+
+    else:
+        vx2 = 0
 
         
         
@@ -83,7 +119,11 @@ while not gameover: #GAME LOOP##################################################
         vy = -8
         isOnGround = False
         direction = UP
-
+    
+    if keys[UP] == True and isOnGround == True: #only jump when on the ground
+        vy2 = -8
+        isOnGround = False
+        direction = UP
 
     
     #COLLISION
@@ -120,46 +160,45 @@ while not gameover: #GAME LOOP##################################################
         isOnGround = True
         vy = 0
 
-
     else:
         isOnGround = False
+   
         
-        if xpos2>100 and xpos2<200 and ypos2+40 >750 and ypos2+40 <770:
+   
+    if xpos2>100 and xpos2<200 and ypos2+40 >750 and ypos2+40 <770:
         ypos2 = 750-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
     elif xpos2>200 and xpos2<300 and ypos2+40 >650 and ypos2+40 <670:
         ypos2 = 650-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
     elif xpos2>300 and xpos2<400 and ypos2+40 >550 and ypos2+40 <570:
         ypos2 = 550-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
         
     elif xpos2>400 and xpos2<500 and ypos2+40 >450 and ypos2+40 <470:
         ypos2 = 450-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
         
     elif xpos2>500 and xpos2<600 and ypos2+40 >350 and ypos2+40 <370:
         ypos2 = 350-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
         
     elif xpos2>600 and xpos2<700 and ypos2+40 >250 and ypos2+40 <270:
         ypos2 = 250-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
         
     elif xpos2>700 and xpos2<800 and ypos2+40 >150 and ypos2+40 <170:
         ypos2 = 150-40
         isOnGround = True
-        vy = 0
+        vy2 = 0
 
-
-    else:
-        isOnGround = False
+    
 
 
     
@@ -168,17 +207,31 @@ while not gameover: #GAME LOOP##################################################
         isOnGround = True
         vy = 0
         ypos = 760
+    
+    if ypos2 > 760:
+        isOnGround = True
+        vy2 = 0
+        ypos2 = 760
         
 
     
     #gravity
     if isOnGround == False:
         vy+=.2 #notice this grows over time, aka ACCELERATION
+        
+    if isOnGround == False:
+        vy2+=.2
 
-
+    
+        
     #update player position
     xpos+=vx 
     ypos+=vy
+    
+    xpos2+=vx2
+    ypos2+=vy2
+    
+  
 
  
   
