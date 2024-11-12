@@ -9,11 +9,12 @@ clock = pygame.time.Clock()
 
 running = True
 
-player = [100, 450, 0, 0] #xpos, ypos, xvel, yvel
 isOnGround = False
 
+player = [100, 450, 0, 0] #xpos, ypos, xvel, yvel
+
 def move_player():
-    global isOnGround #needed to modify a global variable from within a function
+    global isOnGround #needed to modify a global variable from within a functioskibidi toiletn 
     if keys[pygame.K_LEFT]:
         player[2] =- 0.8 #update velocity
     elif keys[pygame.K_RIGHT]:
@@ -27,9 +28,7 @@ def move_player():
     player[0]+=player[2] #add x velocity to x position
     player[1]+=player[3] #add y velocity to y position
 
-    if ypos<450
-        ypos = 450
-        isOnGround = TRUE
+   
 
 def draw_clouds():
     for x in range(100, 800, 300):
@@ -45,9 +44,10 @@ def draw_tree():
         pygame.draw.circle(screen, (73,138,65), (x-40, 325), 40)
         pygame.draw.circle(screen, (73,138,65), (x+40, 325), 40)
        
+       
 
 while running: # Main game loop++++++++++++++++++++++
-    clock.tick()
+    clock.tick(60)
    #input section---------------------------
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -62,9 +62,7 @@ while running: # Main game loop++++++++++++++++++++++
     draw_clouds() #function call
     pygame.draw.rect(screen, (73,138,65), (0, 500, 1000, 100))
     draw_tree()
-    pygame.draw.rect(screen, (255, 0, 255), (player[0], player[1], 50, 50)) #player
+    pygame.draw.rect(screen, (249, 134, 176), (player[0], player[1], 50, 50)) #player
     pygame.display.flip()
     
 pygame.quit()
-
-
