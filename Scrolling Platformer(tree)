@@ -8,41 +8,60 @@ clock = pygame.time.Clock()
 
 
 running = True
-
-isOnGround = False
-
 player = [100, 450, 0, 0] #xpos, ypos, xvel, yvel
+isOnGround = False
+offset = 0
+
+
 
 def move_player():
-    global isOnGround #needed to modify a global variable from within a functioskibidi toiletn 
+    global isOnGround #needed to modify a global variable from within a function
+    global offset
     if keys[pygame.K_LEFT]:
-        player[2] =- 0.8 #update velocity
+        #player[2] =- 5 #update velocity
+       offset += 5
     elif keys[pygame.K_RIGHT]:
-        player[2] = 0.8 #update velocity
+        #player[2] = 5 #update velocity
+        offset -= 5
     else:
         player[2] = 0
+    
+    
+    
+    #Jump mechanics
+    if isOnGround == True and keys[pygame.K_UP]:
+        player[3] = -15 #Player jumps
+        isOnGround = False
     
     if isOnGround == False:
         player[3] += 1 #gravity
         
     player[0]+=player[2] #add x velocity to x position
     player[1]+=player[3] #add y velocity to y position
-
+    
+    if (player[1] >= 450):
+          isOnGround = True
+          player[3] = 0
+          player[1]= 450
+          
+    
    
 
 def draw_clouds():
-    for x in range(100, 800, 300):
-        pygame.draw.circle(screen, (255,255,255), (x, 100), 40)
-        pygame.draw.circle(screen, (255,255,255), (x-50, 125), 40)
-        pygame.draw.circle(screen, (255,255,255), (x+50, 125), 40)
-        pygame.draw.rect(screen, (255,255,255), (x-50, 100, 100, 65))
+    #Draw Clouds in the background
+    for x in range(100, 2000, 300): #this loop controls WHERE and HOW MANY clouds are drawn
+        for i in range(3): #draw 3 circles
+            pygame.draw.circle(screen, (255,255,255), (x + offset, 100), 40)
+            pygame.draw.circle(screen, (255,255,255), (x - 50 + offset, 125), 40)
+            pygame.draw.circle(screen, (255,255,255), (x + 50 + offset, 125), 40)
+        pygame.draw.rect(screen, (255,255,255), (x - 50 + offset, 100, 100, 65)) #flatten bottom edge
         
 def draw_tree():
-    for x in range(100,800,300):
-        pygame.draw.rect(screen, (107,99,72), (x-10, 330, 20, 170))
-        pygame.draw.circle(screen, (73,138,65), (x, 300), 40)
-        pygame.draw.circle(screen, (73,138,65), (x-40, 325), 40)
-        pygame.draw.circle(screen, (73,138,65), (x+40, 325), 40)
+    for x in range(100,2000,300):
+        pygame.draw.rect(screen, (107,99,72), (x - 10 + offset, 330, 20, 170))
+        pygame.draw.circle(screen, (73,138,65), (x + offset, 300), 40)
+        pygame.draw.circle(screen, (73,138,65), (x - 40 + offset, 325), 40)
+        pygame.draw.circle(screen, (73,138,65), (x + 40 + offset, 325), 40)
        
        
 
@@ -62,7 +81,7 @@ while running: # Main game loop++++++++++++++++++++++
     draw_clouds() #function call
     pygame.draw.rect(screen, (73,138,65), (0, 500, 1000, 100))
     draw_tree()
-    pygame.draw.rect(screen, (249, 134, 176), (player[0], player[1], 50, 50)) #player
+    pygame.draw.rect(screen, (249, 134, 176), (player[0], player[1], 100, 100)) #player
     pygame.display.flip()
     
 pygame.quit()
