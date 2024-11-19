@@ -18,8 +18,15 @@ def move_player():
     global isOnGround #needed to modify a global variable from within a function
     global offset
     if keys[pygame.K_LEFT]:
-        #player[2] =- 5 #update velocity
-       offset += 5
+        if offset > 260 and player[0]>0:
+            player[2] =- 5 #update velocity
+      
+      elif player[0]>400 and offset < -1500:
+          player[2] = -5
+          
+    
+    
+       
     elif keys[pygame.K_RIGHT]:
         #player[2] = 5 #update velocity
         offset -= 5
