@@ -1,0 +1,128 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+using namespace std;
+
+//global constants and variables
+const int MAX_INCORRECT = 6; // Maximum wrong guesses allowed
+char incorrect[MAX_INCORRECT]; // Array to hold incorrect guesses
+int numIncorrect = 0; // Counter for the number of incorrect guesses made
+int misses = 0; // Counter for the number of misses
+
+// Function to display the hangman drawing based on how many times the player has guessed wrong
+void displayHangman() {
+	cout << "\n";
+	switch (misses) {
+	case 0:
+		cout << " +---+\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 1:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 2:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << " O   |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 3:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << " O   |\n";
+		cout << " |   |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 4:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << " O   |\n";
+		cout << "/|   |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 5:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << " O   |\n";
+		cout << "/|\\ |\n";
+		cout << "     |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 6:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << " O   |\n";
+		cout << "/|\\ |\n";
+		cout << "/    |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+	case 7:
+		cout << " +---+\n";
+		cout << " |   |\n";
+		cout << " O   |\n";
+		cout << "/|\\ |\n";
+		cout << "/ \\ |\n";
+		cout << "     |\n";
+		cout << "======\n";
+		break;
+		// Additional cases for more misses would continue here....
+	}
+}
+
+// Function to display the current state of the game
+void display(string guessedWord) {
+	cout << "\n Word: ";
+	for (int i = 0; i < guessedWord.length(); i++) {
+		cout << guessedWord[i] << ' '; // Show each character in the guessde word followed by a space
+	}
+	cout << "\n Incorrect guesses: ";
+	for (int j = 0; j < numIncorrect; j++) {
+		cout << incorrect[j] << ' ';
+	}
+	cout << "\n Misses left: " << MAX_INCORRECT - misses << "\n"; // Show how many guesses are left
+	displayHangman(); // Call function to show the hangman drawing
+}
+
+// Function to check the player's guess against the word
+string processGuess(char guess, string word, string guessedWord) {
+	bool isCorrect = false;
+	for (int i = 0; i < word.length(); i++) {
+		if (word[i] == guess && guessedWord[i] == '_') {
+			guessedWord[i] = guess;
+		}	isCorrect = true; // Mark the guess as correct
+	
+	}
+	// Check if the guess was incorrect
+	if (!isCorrect) {
+		// Initalize a variable to indicate if the guess is found in the incorrect guesses
+		bool alreadyGuessed = false;
+
+		// Iterate through the incorrect guesses to see if the guess was already made
+	}
+
+
+
+}
+	
