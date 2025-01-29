@@ -140,7 +140,7 @@ string processGuess(char guess, string word, string guessedWord) {
 }
 	
 int main() {
-	string wordList[] = { "pibble", "gato", "sigma", "nerd", "spiderman", "eric is cool", "gio is not cool", "gabe is sigma" };
+	string wordList[] = { "pibble", "gato", "sigma", "nerd", "spiderman", "eric is not cool", "gio is not cool", "gabe is sigma" };
 	srand(time(0));
 	string word = wordList[rand() % 5];
 	string guessedWord(word.length(), '_');
