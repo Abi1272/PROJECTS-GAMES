@@ -120,9 +120,57 @@ string processGuess(char guess, string word, string guessedWord) {
 		bool alreadyGuessed = false;
 
 		// Iterate through the incorrect guesses to see if the guess was already made
+		for (int j = 0; j < numIncorrect; j++) {
+			if (incorrect[j] == guess) {
+				alreadyGuessed = true;
+				break; // Break the loop if the guess is found
+			}
+		}
+
+	// If the guess was not found in the incorrect guesses
+		if (!alreadyGuessed) {
+			incorrect[numIncorrect++] = guess; // Add the new incorrect guess
+			misses++; // Increment the misses counter
+		}
 	}
+	return guessedWord;
 
 
 
 }
 	
+int main() {
+	string wordList[] = { "pibble", "gato", "sigma", "nerd", "spiderman", "eric is cool", "gio is not cool", "gabe is sigma" };
+	srand(time(0));
+	string word = wordList[rand() % 5];
+	string guessedWord(word.length(), '_');
+
+	cout << "welcome to hangman!\n";
+
+	while (misses < MAX_INCORRECT && guessedWord != word) {
+		display(guessedWord);
+		cout << "enter your guess: ";
+		char guess;
+		cin >> guess;
+
+		string oldGuessedword = guessedWord;
+		guessedWord = processGuess(guess, word, guessedWord);
+
+		if (guessedWord == oldGuessedword) {
+			cout << "Oops! That letter is not in there\n";
+		}
+		else {
+			cout << "good guess\n";
+		}
+
+
+	}
+
+	if (guessedWord == word) {
+		cout << "congrats you won and guessed the word: " << word << "\n";
+	}
+	else {
+		cout << "game over >:( the word was: " << word << "\n";
+	}
+	return 0;
+}
