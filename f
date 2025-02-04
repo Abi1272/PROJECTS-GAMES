@@ -10,7 +10,9 @@ font2 = pygame.font.Font(None, 72) #larger font
 
 pipe_image = pygame.image.load('pipe2.png').convert_alpha()
 
-score = 0 #Score variable
+background_image = pygame.image.load('pibble.png').convert_alpha()
+
+score = 0 #Score variable763VCG EW3
 
 #Bird Class
 class Bird:
@@ -20,7 +22,7 @@ class Bird:
         
     def flap(self):
         self.velocity = -3 #flap
-        
+
     def physics(self):
         self.velocity += 0.1 #gravity
         self.y += self.velocity
@@ -99,8 +101,8 @@ while running: #Game loop===========================================
             
     bird.physics()       
     #render section----------------------------------------
-    screen.fill((0, 0, 0))
     
+    screen.blit(background_image, (0, 0))
     
     score_text = font.render("Score:", True, (255, 255, 255))
     screen.blit(score_text, (650, 20)) #Position the score in the top-right corner
