@@ -8,9 +8,21 @@ clock = pygame.time.Clock() #handles FPS
 font = pygame.font.Font(None, 36) #Font for displaying the score
 font2 = pygame.font.Font(None, 72) #larger font
 
+
+
+#animation variables could go here
+frameWidth = 50
+frameHeight = 50
+RowNum = 0
+frameNum = 0
+ticker = 0
+
 pipe_image = pygame.image.load('pipe2.png').convert_alpha()
 
 background_image = pygame.image.load('pibble.png').convert_alpha()
+
+#load in birb
+bird_image = pygame.image.load('Bird (1).png').convert_alpha()
 
 score = 0 #Score variable763VCG EW3
 
@@ -104,12 +116,23 @@ while running: #Game loop===========================================
     
     screen.blit(background_image, (0, 0))
     
+    #spritesheet movement
+    ticker+=1
+    if ticker%10==0:
+      frameNum+=1
+   
+    if frameNum>1:
+      frameNum = 0
+    
+    #draw the birb
+    screen.blit(bird_image, (50, bird.y), (frameWidth*frameNum, RowNum*frameHeight, frameWidth, frameHeight))
+    
     score_text = font.render("Score:", True, (255, 255, 255))
     screen.blit(score_text, (650, 20)) #Position the score in the top-right corner
     score_text2 = font.render(str(score), True, (255, 255, 255))
     screen.blit(score_text2, (750, 20)) #Position the score in the top-right corner
     
-    bird.draw()
+    #bird.draw()
     for pipe in pipes:
         pipe.draw()
     
