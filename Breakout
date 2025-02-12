@@ -1,5 +1,16 @@
 import pygame
+import random
 pygame.init()
+
+
+class brick:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        self.color = (random.randrange(100, 250),random.randrange(100,250),random.randrange(100, 250))
+    def draw(self):
+        pygame.draw.rect(screen, self.color, (self.xpos, self.ypos, 100, 50))
+
 
 screen = pygame.display.set_mode((700,500))
 pygame.display.set_caption("Pong")
@@ -8,6 +19,19 @@ doExit = False
 
 # The clock will be used to control how fast the screen updates
 clock = pygame.time.Clock()
+
+b1 = brick(50, 50) #Above game loop
+b2 = brick(180, 50)
+b3 = brick(310, 50)
+b4 = brick(440, 50)
+b5 = brick(570, 50)
+
+b6 = brick(50, 130) 
+b7 = brick(180, 130)
+b8 = brick(310, 130)
+b9 = brick(440, 130)
+b10 = brick(570, 130)
+
 
 p1x= 300
 p1y = 470
@@ -23,7 +47,9 @@ by = 250 #yposition
 bVx = 5 #x velocity (horizontal speed)
 bVy = 5 #y velocity (verticle speed)
 
-while not doExit:  #GAME LOOP
+
+
+while not doExit:  #GAME LOOP------------------------------
     
     #event queue stuff
     clock.tick(60)
@@ -39,7 +65,7 @@ while not doExit:  #GAME LOOP
     if keys[pygame.K_d]:
         p1x+=5
             
-
+    #ball-paddle reflection
     if bx -5 < p1x and by + 20 > p1y and by < p1y + 100:
         bVx *= -1
   
@@ -55,7 +81,7 @@ while not doExit:  #GAME LOOP
         bVy *= -1
                   
         
-    #render section
+    #render section-------------------------------------
     screen.fill((0,0,0))
    #draw rectangle
     pygame.draw.rect(screen, (255, 255, 255), (p1x, p1y, 180, 30), 1)
@@ -67,9 +93,20 @@ while not doExit:  #GAME LOOP
     screen.blit(text, (250,10))
    
 
+
     
-    #draw a line down the middle
-    pygame.draw.line(screen, (255, 0, 255), [349, 0], [349, 500], 5)
+
+    b1.draw() #In render section, inside game loop
+    b2.draw()
+    b3.draw()
+    b4.draw()
+    b5.draw()
+   
+    b6.draw()
+    b7.draw()
+    b8.draw()
+    b9.draw()
+    b10.draw()
     
     if bx > 700:
         p1Score += 1
