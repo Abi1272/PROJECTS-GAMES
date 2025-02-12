@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Adventure Game</title>
+    <style>
+        #gameImage {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HTML: Game content -->
+
+    <h2 id="roomTitle">Room Title</h2>
+    <img id="gameImage" src="" alt="Room Image">
+    <p id="roomDescription">Room Description</p>
+
+    <!-- User input -->
+    <input type="text" id="userInput" placeholder="Type your command">
+    <button onclick="processCommand()">Go</button>
+
+    <!-- JavaScript: Game logic -->
+
+    <script>
+        // Game rooms
+        var rooms = {
+            'start': {
+                'title': 'Art Gallery of Cats!!',
+                'description': 'You are trapped in a art gallery. Can you get out as you witness the top 10 scariest cats! Move on foward, there is a door to the north.',
+                'image': 'start cat.jpg' ,
+                'directions': {
+                    'north': 'Yoga',
+                    
+                }
+            },
+            'Yoga': {
+                'title': 'The Yoga Cat',
+                'description': 'You find yourself in the next room with a portrait of the yoga cat. Escape! Keep moving foward!! There\'s a door to the north.',
+                'image': 'yoga cat (1).jpg',
+                'directions': {
+                    'north': 'Upside'
+                }
+            },
+            'Upside': {
+                'title': 'Upsidedown GATO',
+                'description': 'In the next room you notice a potrait of an upsideown cat. The more you look at it the more scared you get. There\'s a door to the North.',
+                'image': 'upside.jpg',
+                'directions': {
+                    'north': 'dou'
+                }
+            },
+            'dou': {
+                'title': 'The Dou Dou Cat',
+                'description': 'In this room you are not really scard you notice the painting of the iconic Dou Dou cat. Calmly walk away to the nex room. There\'s a door to the north.',
+                'image': 'oye.jpg',
+                'directions': {
+                    'north': 'Pib'
+                }
+            },
+            'Pib': {
+                'title': 'Pibble',
+                'description': 'This is no cat? There\'s a door to the north.',
+                'image': 'Pib.jpg',
+                'directions': {
+                    'north': 'AH'
+                }
+            },
+            'AH': {
+                'title': 'Sad Cat',
+                'description': 'In this room the potrait displays a sad sad very sad cat. Run to the next room or cry. There\'s a door to the north.',
+                'image': 'AH.jpg',
+                'directions': {
+                    'north': 'hairless'
+                }
+            },
+            'hairless': {
+                'title': 'The scariest cat IS HAIRLESS!!',
+                'description': 'You notice a BIG painting of the ugliest cat ever.. A HAIRLESS CAT!! Go South to restart this art gallery',
+                'image': 'hairless (1).jpg',
+                'directions': {
+                    'south': 'start'
+                }
+            }
+        };
+
+        var currentRoom = 'start'; // Starting room
+        updateRoom();
+
+        function processCommand() {
+            var command = document.getElementById('userInput').value.toLowerCase();
+            var directions = rooms[currentRoom].directions;
+
+            if (directions[command]) {
+                currentRoom = directions[command];
+                updateRoom();
+            } else {
+                alert('You cannot go that way.');
+            }
+
+            document.getElementById('userInput').value = ''; // Clear input field
+        }
+
+        function updateRoom() {
+            var room = rooms[currentRoom];
+            document.getElementById('roomTitle').innerText = room.title;
+            document.getElementById('roomDescription').innerText = room.description;
+            document.getElementById('gameImage').src = room.image;
+        }
+    </script>
+
+</body>
+</html>
