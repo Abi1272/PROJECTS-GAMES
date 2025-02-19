@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<style>body{background-color:pink;}</style>
+</head>
+<body>
+</title>Gato Land</title>
+
+<div style="background-color: magenta; padding: 10px;">LIVE LOVE CATS</div>
+
+    <button onclick="changeColors()">Click Me to Change Colors</button>
+
+    <div id="text1" class="color-text">Watch the colors change!</div>
+
+    <h2 style="color: red;">Guess the Number Game</h2>
+    <p>I'm thinking of a number between 1 and 100. Can you guess it?</p>
+
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">Guess</button>
+    
+    <p id="result"></p>
+
+<script>
+        function changeColors() {
+            // Array of colors for the text and background
+            var colors = ['red','blue', 'gold', 'green', 'fuchsia', 'aqua', 'pink'];
+
+            // Getting the text element by its ID
+            var element = document.getElementById('text1');
+
+            // Picking a random color from the array for the text
+
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            element.style.color = randomColor; // Changing the text color
+
+            var backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.style.backgroundColor = backgroundColor; //change background color
+        }
+    </script>
+
+</body>
+</html>
+
+<script>
+        // Generate a random number between 1 and 50
+        var secretNumber = Math.floor(Math.random() * 50) + 1;
+	console.log(secretNumber) //for debugging purposes. press ctrl+shift+j to see this!
+
+
+        function checkGuess() {
+            // Retrieve the user's guess
+            var userGuess = document.getElementById('guess').value;
+
+            // Compare the guess to the secret number
+            if (userGuess == secretNumber) {
+                document.getElementById('result').innerText = 'Congratulations! You guessed it!';
+            } else if (userGuess < secretNumber) {
+                document.getElementById('result').innerText = 'Too low. Try again!';
+            } else {
+                document.getElementById('result').innerText = 'Too high. Try again!';
+            }
+        }
+    </script>
+
+	<!-- Heading -->
+	<h1 style="color: hotpink; font-family: sans-serif;"Welcome to the Gato Website</h1>
+
+<span style="color: aqua; transition: color 0.3s;" onmouseover="this.style.color='magenta'" onmouseout="this.style.color='yellow'">Do NOT hover over this text trust</span>
+
+	<!-- Paragraph -->
+	<p>Do you like cats? Well, lucky for you, cats are domesticated pets, meaning you can own one. Cats tend to be small, but they aren't always small as they can be fed too much, making them really huge! While cats are sociable animals, they can also be independent. This is due to their amazing adaptability skills. Remember, just because pets can be independent does not mean you should not take care of them. Take care of your pets! Cats, also known as gatos, have a variety of colors, and some are fluffy while others are hairless. In my opinion fluffy cats are better like munchkin cats.</p>
+
+	<!-- Sub-heading -->
+	<h2 style="color: orange;">Fun Facts About Cats</h2>
+	<!-- Unordered List -->
+	<ul style="color: hotpink; font-family: sans-serif;>
+	    <li> "A group of cats is called a clowder</li>
+	    <li>Cats are able to make over 90 different sounds. Meow! Grrrr! Hisss!</li>
+	    <li>Cats are able to jump really high!</li>
+	    <li>Cats are lactose intolerant</li>
+	</ul>
+
+	<!-- Image -->
+	<img src="talo.png" style="border: 4px solid yellow;" alt="A cute gato (cat)" width="300" height="300"> 
+	
+        <img src="HC.jpg" style="border: 4px solid aqua;" alt="A cute gato (cat)" width="300" height="300">
+	<img src="doud.jpg" style="border: 4px solid orange;" alt="A cute cat (cat)" width="300" height="300">
+
+
+
+	<!-- HyperLink -->
+	<p> <a href="https://www.youtube.com/watch?v=JxS5E-kZc2s">click here for free cat!</a> </p>
+    <p> <a href="file:///C:/Users/753188/tbg.html">click here for a quick art gallery game!</a> </p>
+
+
+</body>
+</html>
