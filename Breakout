@@ -46,7 +46,7 @@ b8 = brick(310, 130)
 b9 = brick(440, 130)
 b10 = brick(570, 130)
 
-
+ballSize = 10
 p1x= 300
 p1y = 470
 
@@ -108,7 +108,7 @@ while not doExit:  #GAME LOOP------------------------------
         p1x+=5
             
     #ball-paddle reflection
-    if bx -5 < p1x and by + 20 > p1y and by < p1y + 100:
+    if bx < 0 or bx + ballSize > 800:
         bVx *= -1
     
   
