@@ -26,17 +26,21 @@ new_hour = ((current_hour - 1 + hours_to_add) % 12) + 1
 print("In", hours_to_add, "hours, the time will be ", new_hour, ":00.")
 
 #encrypt
+messege = input("enter the messege for encrypt")
 
 #number of positions to shift
+shift = int(input("enter how many numer of position to shift"))
 
 #empty string to hold the encrypted message
+encrypted_message = ""
 
 #Loop through each character in the messege
-#
+for i in message:
     #Shift the character by the shift amount and wrap around using modulo 26
     shifted = (ord(i) - ord('A') + shift) % 26
     #Convert the shifted numeric value back to a character and directly add to the string
     encrypted_message += chr(shifted + ord('A'))
     
 #Print the encrypted messege
+print(message, "the encrypted messege is", encrypted_message)
 
