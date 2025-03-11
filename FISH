@@ -1,0 +1,66 @@
+import pygame
+import random
+import time
+
+
+bubbles_image = pygame.image.load('.png').convert_alpha()
+
+class bubbles:
+    def __init__(self, x):
+        self.x = x
+        self.height = random.randint(50, 400)
+        self.gap = 150 #Gap size between top and bottom pipes
+        self.top_bubbles = pygame.transform.flip(bubbles_image, False, True)
+        self.bottom_bubbles = bubbles_image
+
+
+    def move(self):
+        self.x -= 2 #Move pipes to the left
+        
+    def draw(self):
+        top_height = self.height
+        bottom_height = 800 - (self.height + self.gap)
+        
+        screen.blit(self.top_pipe, (self.x, top_height - self.top_pipe.get_height()))
+        
+        screen.blit(self.bottom_pipe, (self.x, self.height + self.gap))
+
+pipes = []
+spawn_pipe = 0 #timer for pipe spawn
+
+def check_collision(bx, by, px, py):
+    #TOP PIPE CHECK
+    if bx + 30 > px and bx < px + 50 and by < py:
+        return True
+    #BOTTOM PIPE CHECK
+    if bx + 30 > px and bx < px + 50 and by + 30 > py + 150:
+        return True
+    return False
+
+ticker = 0
+
+  #spaw pipes
+    spawn_pipe += 1 #increment timer
+    if spawn_pipe >= 150: #pipe is spawned every 150 frames
+        pipes.append(Pipe(800)) #this INSTANTIATES a new pipe and puts it in the list!
+        spawn_pipe = 0 #reset timer
+    
+    #move pipes!
+    for pipe in pipes: #walk through list of pipe
+        pipe.move() #move each pipe
+        if check_collision(50, bird.y, pipe.x, pipe.height): #check collision with birb
+            running = False #kill game if you hit a pole
+        
+    #destroy pipes that have gone off screen
+    i = len(pipes) - 1 #start at end of list
+    while i >= 0:
+        if pipes[i].x <= -50: #check if pipes is off screen
+            pipes.pop(i) #remove from list
+        i -= 1 #this increments the while loop
+            
+    bird.physics()    
+    
+    for pipe in pipes:
+        pipe.draw()
+    
+    pygame.display.flip()    
