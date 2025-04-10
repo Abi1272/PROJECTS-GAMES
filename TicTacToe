@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+//function prototypes
+void printBoard(const char board[3][3]);
+
+int main() {
+	char board[3][3] = { {'-', '-', '-'}, {'-', '-', '-'}, {'-', '-', '-'}, };
+	char player = 'X'; // kee[s track fo whose turn it is
+	bool endGame = false; //runs the game loop
+	cout << "Welcome to Tic-Tac-Toe!" << endl;
+
+
+	while (endGame == false) {
+		cout << "Player" << player << "'s turn!" << endl << endl;
+		
+		if (player == 'X') //if player is X, change to Y
+			player = 'Y';
+		
+		else if (player == 'Y') 
+			player = 'X';
+	}
+
+}
+
+void printBoard(const char board[5][5]{
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			cout << board[i][j] << " ";
+
+		}
+		cout << endl;
+	}
+}
