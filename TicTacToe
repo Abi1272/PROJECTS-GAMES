@@ -15,7 +15,7 @@ int main() {
 
 	cout << "welcome to Tic-Tac-Toe" << endl;
 	
-	while (endgame == false) {
+	while (endgame == false) { //GAME LOOP-------------------
 		printBoard(board);
 		playerTurn(board, player);
 
@@ -54,15 +54,6 @@ void printBoard(const char board[3][3]) {
 	}
 }
 
-bool checkFull(char board[][3]) {
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			if (board[i][j] == '-') {
-				return false;
-			}
-		}
-	}
-}
 
 
 
@@ -84,16 +75,16 @@ void playerTurn(char board[3][3], char player) {
 
 	//place the X or O into the board (minus 1 since arrays start at 0)
 	if (player == 'X')
-		board[row - 1][col - 1] = 'X'; //place am X for player 1
+		board[row - 1][col - 1] = 'X'; //place an X for player 1
 	else
-		board[row - 1][col - 1] = 'O';
+		board[row - 1][col - 1] = 'O'; //otherwise place an O
 
 }
 
-
+//Function to check if the game has been won
 bool checkWin(const char board[3][3]) {
 
-
+	//check horizontal and vertical lines-----------------------------
 	for (int i = 0; i < 3; i++) {
 
 		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != '-')
@@ -103,7 +94,7 @@ bool checkWin(const char board[3][3]) {
 			return true;
 
 	}
-
+	//check diagonals-------------------------------------------------
 	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '-')
 		return true;
 	if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != '-')
@@ -112,3 +103,12 @@ bool checkWin(const char board[3][3]) {
 	return false;
 }
 
+bool checkFull(char board[][3]) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (board[i][j] == '-') {
+				return false;
+			}
+		}
+	}
+}
