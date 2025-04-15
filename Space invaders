@@ -1,0 +1,21 @@
+import pygame #bring in module to handle graphics, input, etc 
+
+pygame.init() #set up pygame
+pygame.display.set_caption("space invaders!")
+screen = pygame.display_set.mode((800,800))
+clock = pygame.time.Clock()
+gameover = False 
+
+
+while not gameover: #GAME LOOP-----------------------------------------------------------------#
+    clock.tick(60) #FPS
+
+    #RENDER Section--------------------------------------------------------------------------------------------
+
+    screen.fill((255,255,255))
+
+    pygame.display.flip()
+
+#End Game Loop------------------------------------------------------#
+
+pygame.quit()
