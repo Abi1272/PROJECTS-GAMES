@@ -1,0 +1,18 @@
+questions = ["What is the largest ocean on Earth?","What is the longest river in the world?", "What is the capital of France?"]
+anwsers = ["Pacific Ocean", "The Nile River", "Paris"]
+
+def HistoryQuiz(questions, correct):
+          
+        for i in range (3):
+            print(questions[i])
+            response = input("what's your answer?")
+        
+            if response == correct[i]:
+                 print("you are right!")
+            
+            elif response != correct[i]:
+                 print("you are wrong!")
+            
+    
+HistoryQuiz(questions,anwsers)
+
