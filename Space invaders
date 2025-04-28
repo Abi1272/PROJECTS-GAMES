@@ -2,19 +2,38 @@ import pygame #bring in module to handle graphics, input, etc
 
 pygame.init() #set up pygame
 pygame.display.set_caption("space invaders!")
-screen = pygame.display_set.mode((800,800))
+screen = pygame.display.set_mode((800,800))
 clock = pygame.time.Clock()
 gameover = False 
 
+#player variables
+xpos = 400
+ypos = 750
+moveLeft = False
 
 while not gameover: #GAME LOOP-----------------------------------------------------------------#
     clock.tick(60) #FPS
 
+    #physics section-------------
+    
+    #check variables from the input section
+    if moveLeft == True:
+        vx = -3
+    else:
+        vx = 0
+
+    #update player position
+    xpos += vx
+    
+
+
     #RENDER Section--------------------------------------------------------------------------------------------
 
     screen.fill((255,255,255))
+    
+    pygame.draw.rect(screen, (200, 200, 100), (400, 750, 60, 20)) #Draw player
 
-    pygame.display.flip()
+    pygame.display.flip() #this flips the buffer(memory) where stuff been drawn to screen
 
 #End Game Loop------------------------------------------------------#
 
