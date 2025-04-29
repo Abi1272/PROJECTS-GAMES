@@ -1,11 +1,11 @@
 questions = ["What is the largest ocean on Earth?","What is the longest river in the world?", "What is the capital of France?"]
-anwsers = ["Pacific Ocean", "The Nile River", "Paris"]
+answers = ["Pacific Ocean", "The Nile River", "Paris"]
 
 def HistoryQuiz(questions, correct):
           
-        for i in range (3):
+        for i in range (3): #My classmate helped me write this for loop
             print(questions[i])
-            response = input("what's your answer?")
+            response = input("what's your answers?")
         
             if response == correct[i]:
                  print("you are right!")
@@ -13,6 +13,5 @@ def HistoryQuiz(questions, correct):
             elif response != correct[i]:
                  print("you are wrong!")
             
-    
-HistoryQuiz(questions,anwsers)
 
+HistoryQuiz(questions,answers)
